@@ -11,19 +11,19 @@ const weekdays = {
 	5: 'Sex',
 	6: 'Sáb'
 }
-	// cidade inicial.
+	// starting city.
 	getForecast('São Paulo');
 
-// botão que obtem a previssao do tempo. 
+// button getting the weather forecast.
 $('#search').click(function(event) {
-// evita que a pagina aja como se estivesse enviando um formulario.
+//prevents the page from acting as if you were submitting a form.
 	event.preventDefault();
 	const newCity = $('#city').val();
 
 	getForecast(newCity);
 });
 
-//pega informação da cidade usando o input da caixa de texto
+//get information from the city using the input from the text box
 function getForecast(city) {
 	$('#loader').css('display', '');
 	$('#forecast').css('display', 'none');
@@ -58,13 +58,13 @@ function getForecast(city) {
 	});
 }
 
-// ele vai no elemento nest-days e limpa tudo dentro dele.
+// it goes into the nest-days element and cleans everything inside it.
 function clearFields() {
 	$('#next-days').empty();
 }
 
-// usa as informaçoes da Api para mostrar a previssão de hoje
-//tambem define o icone para cada tempo.  
+//uses Api's information to show today's forecast
+//also sets the icon for each time.
 function displayToday(today) {
 	const temperature = Math.round(today.temp);
 	const windSpeed = today.wind_spd;
@@ -81,8 +81,8 @@ function displayToday(today) {
 	$('#weather-icon').attr('src', iconURL);
 }
 
-//Mostra a previsão dos proximos dias
-// Mostrando tambema a data, a maxima e minima de cada dia   
+//Shows the forecast of the next days
+//Showing also the date, the maximum and minimum of each day  
 function displayNextDays(nextDays) {
 	for(let i = 0; i < nextDays.length; i = i + 1) {
 	const day = nextDays[i];
